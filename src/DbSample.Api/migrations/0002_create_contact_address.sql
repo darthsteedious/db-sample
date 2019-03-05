@@ -1,0 +1,11 @@
+CREATE TABLE contact_address (
+  contact_address_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  contact_id INTEGER NOT NULL,
+  line_1 VARCHAR(500) NOT NULL,
+  line_2 VARCHAR(500),
+  city VARCHAR(200) NOT NULL,
+  state VARCHAR(50) NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  modified_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (contact_id) REFERENCES contact(contact_id)
+)
