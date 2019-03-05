@@ -41,5 +41,18 @@ WHERE contact_id = @Id";
                 return contact;
             }
         }
+
+        public int CreateContact(Contact contact)
+        {
+            using (var connection = SqlConnectionFactory.GetConnection(configuration))
+            {
+                const string command = @"
+INSERT INTO contact(first_name, last_name, birthdate)
+VALUES (@FirstName, @LastName, @Birthdate);
+SELECT last_insert_rowid()";
+
+                return connection.ExecuteScalar<int>(command, contact);
+            }
+        }
     }
 }
